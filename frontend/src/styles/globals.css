@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+body{
+  background: black;
+}
+.Red{
+  background-color: red;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color:white;
+  outline: none;
+  border: none;
+}
