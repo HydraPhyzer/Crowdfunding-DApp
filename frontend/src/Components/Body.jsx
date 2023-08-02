@@ -69,7 +69,7 @@ const Body = () => {
   };
   return (
     <div className="bg-[#34495e] text-white p-2 rounded-sm shadow-md backdrop-filter backdrop-blur-xl bg-opacity-60 border-[1px] border-gray-500 h-[100%]">
-      <section className="flex justify-between items-center p-2">
+      <section className="border-b-2 border-white sm:flex sm:flex-row sm:justify-between sm:items-center p-2 flex flex-col gap-y-5 sm:gap-y-0 w-[100%]">
         <header>
           <span
             onClick={() => {
@@ -112,45 +112,61 @@ const Body = () => {
 
       <section className="p-2 flex justify-center items-center w-[100%] overflow-y-scroll">
         {Menu === "Your" && (
-          <div className="w-[100%] flex gap-2">
-            {Data?.data ?
-              Data?.data?.map((Each, Ind) => {
-                return(
-                <div key={Ind} className="p-2 flex flex-col gap-2 border-[1px] border-blue-500 w-[20%] flex-wrap">
-                  <MediaRenderer
-                    src={Each[2]}
-                    className="object-contain rounded-md w-[20%] bg-black"
-                    height={100}
-                  />
-                  <p>{Each[0]}</p>
-                  <p className="text-sm">{Each[1]}</p>
-                </div>
-                )
-              }):"Empty"}
+          <div className="w-[100%] sm:flex flex sm:flex-row flex-col gap-2">
+            {Data?.data
+              ? Data?.data?.map((Each, Ind) => {
+                  return (
+                    <Link
+                      to={`/project/${Ind}`}
+                      key={Ind}
+                      className="p-2 flex flex-col gap-2 border-[1px] border-blue-500 w-[100%] sm:w-[20%] flex-wrap"
+                    >
+                      <MediaRenderer
+                        src={Each[2]}
+                        className="object-contain rounded-md w-[20%] bg-black"
+                        height={100}
+                      />
+                      <p>{Each[0]}</p>
+                      <p className="text-sm">{Each[1]}</p>
+                    </Link>
+                  );
+                })
+              : "Empty"}
           </div>
         )}
 
-        {Menu === "All" &&
-        <div className="w-[100%] flex gap-2">
-            {AllCmps?.data ?
-              AllCmps?.data?.map((Each, Ind) => {
-                return(
-                <div key={Ind} className="p-2 flex flex-col gap-2 border-[1px] border-blue-500 w-[20%] flex-wrap">
-                  <MediaRenderer
-                    src={Each[2]}
-                    className="object-contain rounded-md w-[20%] bg-black"
-                    height={100}
-                  />
-                  <p>{Each[0]}</p>
-                  <p className="text-sm">{Each[1]}</p>
-                </div>
-                )
-              }):"Empty"}
-          </div>}
+        {Menu === "All" && (
+          <div className="w-[100%] sm:flex flex flex-col sm:flex-row gap-2">
+            {AllCmps?.data
+              ? AllCmps?.data?.map((Each, Ind) => {
+                  return (
+                    <Link
+                      to={`/project/${Ind}`}
+                      key={Ind}
+                      className="p-2 flex flex-col gap-2 border-[1px] border-blue-500 w-[100%] sm:w-[20%] flex-wrap relative"
+                    >
+                      <MediaRenderer
+                        src={Each[2]}
+                        className="object-contain rounded-md w-[20%] bg-black"
+                        height={100}
+                      />
+                      <p
+                        className={`absolute p-2 w-2 h-2 ${
+                          Each[6] == false ? "bg-red-500" : "bg-green-500"
+                        } rounded-full m-1 right-2`}
+                      ></p>
+                      <p>{Each[0]}</p>
+                      <p className="text-sm">{Each[1]}</p>
+                    </Link>
+                  );
+                })
+              : "Empty"}
+          </div>
+        )}
 
         {Menu === "Create" && (
           <div className="cursor-pointer w-[50%] p-2 flex justify-center items-center rounded-lg flex-col gap-5">
-            <div className="flex gap-5 w-[100%] justify-center items-center">
+            <div className="sm:flex gap-5 w-[100%] sm:justify-center sm:items-center flex flex-col sm:flex-row">
               <section className="flex flex-col gap-5">
                 {File && (
                   <img

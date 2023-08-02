@@ -19,7 +19,7 @@ contract CrowdFund {
         bool Status;
         uint256 DonorCount;
     }
-    Compaign[] AllCompaigns;
+    Compaign[] public AllCompaigns;
     mapping(uint256 => mapping(address => uint256)) public  Donors;
     address[] public DonorList;
 
@@ -118,11 +118,19 @@ contract CrowdFund {
 
         for (uint256 I = 0; I < AllCompaigns[ID].DonorCount; I++) {
             for (uint256 J = 0; J < DonorList.length; J++) {
-                if (Donors[ID][DonorList[J]] > 0) {
-                    List[I] = DonorList[J];
+                if (Donors[ID][DonorList[J]] >= 0) {
+                    List[I] = DonorList[I];
                 }
             }
         }
         return List;
+    }
+    function GetAllCompaigns() public view  returns(Compaign[] memory){
+        require(AllCompaigns.length>0, "No Compaigns Available");
+        Compaign[] memory AllCmps=new Compaign[](AllCompaigns.length);
+        for(uint I=0 ; I<AllCompaigns.length ; I++){
+            AllCmps[I]=AllCompaigns[I];
+        }
+        return AllCmps;
     }
 }

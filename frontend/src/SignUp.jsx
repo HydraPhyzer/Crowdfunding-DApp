@@ -48,7 +48,7 @@ const SignUp = () => {
   return (
     <div>
       <section className="flex flex-col justify-between h-[100vh]">
-        <section className="h-[10%] m-2">
+        <section className="h-max m-2">
           <Header />
         </section>
         <section className="m-2 bg-[#34495e] text-white p-2 rounded-sm shadow-md backdrop-filter backdrop-blur-xl bg-opacity-60 border-[1px] border-gray-500 h-[100%] flex justify-center items-center">

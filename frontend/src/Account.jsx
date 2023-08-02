@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
@@ -25,11 +25,16 @@ const Account = () => {
   return (
     <div>
       <section className="flex flex-col justify-between h-[100vh]">
-        <section className="h-[10%] m-2">
+        <section className="h-max m-2">
           <Header />
         </section>
-        <section className="m-2 bg-[#34495e] text-white p-2 rounded-sm shadow-md backdrop-filter backdrop-blur-xl bg-opacity-60 border-[1px] border-gray-500 h-[100%] flex justify-center items-center">
-        <Link to="/" className="p-2 bg-green-500 rounded-md outline-none flex justify-center items-center absolute top-0 left-0 m-2">Home</Link>
+        <section className="m-2 bg-[#34495e] text-white p-2 rounded-sm shadow-md backdrop-filter backdrop-blur-xl bg-opacity-60 border-[1px] border-gray-500 h-[100%] sm:flex sm:justify-center flex sm:flex-row flex-col items-center">
+          <Link
+            to="/"
+            className="p-2 bg-green-500 rounded-md outline-none flex justify-center items-center absolute top-0 left-0 m-2"
+          >
+            Home
+          </Link>
           {Data?.data && (
             <React.Fragment>
               <MediaRenderer

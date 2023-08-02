@@ -13,6 +13,7 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Project from "./Components/Project";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUp />,
   },
+  {
+    path: "/project/:id",
+    element: <Project />,
+  },
+
 ]);
 root.render(
   <React.StrictMode>
